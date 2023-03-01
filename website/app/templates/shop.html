@@ -1,0 +1,77 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block content %}
+<div class="row align-items-center py-1">
+    <div class="col-md-12 text-white">
+        <h1>Design the guitar of your dreams</h1>
+        <p class="text-center mt-4 mb-2">1. Assemble a guitar you want from parts shown below:</p>
+        <form action="{% url 'order' %}" method="POST" class="align-items-center">
+            {% csrf_token %}
+            <input type="hidden" name="order_id" value="{{ order_id }}">
+            <div class="text-center">
+                <label style="width: 200px; text-align: right"><span style="color: red">*</span>Brand:</label>
+                <select class="mb-sm-1" style="width: 200px; height: 30px" name="brand" required>
+                    {% for value in brand %}
+                    <option value="{{ value }}">{{ value }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <div class="text-center">
+                <label style="width: 200px; text-align: right"><span style="color: red">*</span>Body wood:</label>
+                <select class="mb-sm-1" style="width: 200px; height: 30px" name="bodywood" required>
+                    {% for value in bodywood %}
+                    <option value="{{ value }}">{{ value }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <div class="text-center">
+                <label style="width: 200px; text-align: right"><span style="color: red">*</span>Neck wood:</label>
+                <select class="mb-sm-1" style="width: 200px; height: 30px" name="neckwood" required>
+                    {% for value in neckwood %}
+                    <option value="{{ value }}">{{ value }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <div class="text-center">
+                <label style="width: 200px; text-align: right"><span style="color: red">*</span>Pickups:</label>
+                <select class="mb-sm-1" style="width: 200px; height: 30px" name="pickups" required>
+                    {% for value in pickups %}
+                    <option value="{{ value }}">{{ value }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <div class="text-center">
+                <label style="width: 200px; text-align: right"><span style="color: red">*</span>Color:</label>
+                <select class="mb-sm-1" style="width: 200px; height: 30px" name="color" required>
+                    {% for value in color %}
+                    <option value="{{ value }}">{{ value }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+
+            <div class="text-center">
+                <p class="text-center mt-4 mb-2">2. Leave some information about you:</p>
+                <label class="text-end" style="width: 200px;" for="fullname"><span style="color: red">*</span>Name:</label>
+                <input class="mb-sm-1" style="width: 200px; height: 30px;" type="text" name="fullname" placeholder="Your name" required>
+                <br>
+                <label class="text-end" style="width: 200px;" for="tel"><span style="color: red">*</span>Phone number:</label>
+                <input class="mb-sm-1" style="width: 200px; height: 30px;" type="tel" name="tel"
+                    placeholder="ex: +375 29 555-12-34" required>
+                <br>
+                <label class="text-end" style="width: 200px;" for="tel">Notes:</label>
+                <textarea class="mb-sm-1 align-top" style="width: 200px; height: 100px;"
+                    placeholder="Some notes if needed" name="notes"></textarea>
+            </div>
+
+            <div class="text-center pt-4">
+                <label class="text-end" style="width: 200px;"></label>
+                <input style="width: 200px; box-shadow: 0 0 5px black; border-radius: 5px; border-width: 0;"
+                    type="submit" value="Order!">
+            </div>
+
+        </form>
+    </div>
+</div>
+{% endblock %}

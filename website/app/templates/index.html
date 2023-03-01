@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block content %}
+<div class="container">
+    <div class="row align-items-center py-1">
+        <div class="col-md-12 text-white">
+            <h1>Start assembling the guitar you want right now!</h1>
+            <h2>Click ↓</h2>
+            <p class="text-center">
+                <a href="{% url 'shop' %}"><img src="{% static '/app/assets/img/gibson.png' %}" width="50%"></a>
+            </p>
+        </div>
+    </div>
+</div>
+{% endblock %}
